@@ -34,7 +34,7 @@ screen.onkeypress(exit_program, "Escape")
 game_is_on = True
 while game_is_on:
     screen.update()
-    time.sleep(ball.speed)
+    time.sleep(ball.movement_speed)
     ball.move()
 
     # Detect collision with top wall
@@ -44,17 +44,14 @@ while game_is_on:
     # Detect collision with paddle
     if ball.xcor() > 320 and ball.distance(r_paddle) <= 50 or ball.distance(l_paddle) <= 50 and ball.xcor() < -320:
         ball.x_bounce()
-        ball.speed *= .95
 
     # Detect right paddle miss
     if ball.xcor() > 380:
         ball.reset_position()
-        ball.speed = .1
         scoreboard.l_point()
     # Detect left paddle miss
     if ball.xcor() < -380:
         ball.reset_position()
-        ball.speed = .1
         scoreboard.r_point()
 
 
