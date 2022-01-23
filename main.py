@@ -25,19 +25,21 @@ game_is_on = True
 while game_is_on:
     screen.update()
     time.sleep(.1)
-    ball.ball_move()
-    heading = ball.heading()
+    ball.move()
 
-    if ball.distance(l_paddle) < 15:
-        ball.setheading(180 - heading)
+    # Detect collision with top wall
+    if ball.ycor() > 280 or ball.ycor() < -280:
+        ball.y_bounce()
 
-    if ball.distance(r_paddle) < 15:
-        ball.setheading(180 - heading)
+    # Detect collision with paddle
+    if ball.xcor() > 320 and ball.distance(r_paddle) <= 50 or ball.distance(l_paddle) <= 50 and ball.xcor() < -320:
+        ball.x_bounce()
 
-    if ball.xcor() < -350 and ball.ycor() >= 300:
-        ball.setheading(180 - heading)
-
-
-
+    # Detect right paddle miss
+    if ball.xcor() > 380:
+        ball.reset_position()
+    # Detect left paddle miss
+    if ball.xcor() < -380:
+        ball.reset_position()
 
 screen.exitonclick()
