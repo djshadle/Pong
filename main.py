@@ -27,7 +27,7 @@ r_paddle = Paddle(R_POS)
 screen.listen()
 screen.onkeypress(r_paddle.r_up, "Up")
 screen.onkeypress(r_paddle.r_down, "Down")
-screen.onkeypress(l_paddle.l_up_press, "w")
+screen.onkeypress(l_paddle.l_up_press, "e")
 screen.onkeypress(l_paddle.l_down, "s")
 screen.onkeypress(exit_program, "Escape")
 
